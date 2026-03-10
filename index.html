@@ -24,7 +24,6 @@
       text-align: center;
       z-index: 20;
       pointer-events: none;
-      
     }
 
     #projectTitle h1 {
@@ -69,7 +68,6 @@
     /* ============================= */
     /* FILTER CONTROLS */
     /* ============================= */
-
     #filtersContainer {
       position: absolute;
       top: 20px;
@@ -86,52 +84,282 @@
       font-size: 13px;
     }
 
-    .controls input {
+    .controls input[type="range"] {
       width: 100%;
     }
 
-      #habitabilityPanel {
-    position: absolute;
-    left: 20px;
-    top: 120px;
-    width: 280px;
-    background: rgba(0, 0, 20, 0.85);
-    color: white;
-    padding: 16px;
-    border-radius: 10px;
-    font-size: 13px;
-    backdrop-filter: blur(6px);
-    display: none; /* hidden by default */
-    z-index: 20;
-  }
+    .controls button {
+      margin-top: 8px;
+      width: 100%;
+      padding: 6px 0;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.2s;
+    }
 
-  #habitabilityPanel h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-  }
+    .controls button:hover {
+      background: rgba(255,255,255,0.2);
+    }
 
-  #habitabilityPanel hr {
-    border: none;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    margin: 10px 0;
-  }
+    /* Color mode button has special accent */
+    #toggleColorMode {
+      border-color: rgba(100,200,255,0.4);
+      color: #aaddff;
+    }
 
-  .hz-good {
-    color: #00ff88;
-  }
 
-  .hz-bad {
-    color: #ff5555;
-  }
+    /* ============================= */
+    /* FILTER TABS */
+    /* ============================= */
+    .filter-section-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.55;
+      margin-bottom: 5px;
+    }
 
-  .panel-note {
-    opacity: 0.65;
-    font-size: 11px;
-    margin-top: 6px;
-  }
+    .tab-group {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
 
+    .tab-btn {
+      flex: 1;
+      padding: 5px 4px;
+      font-size: 11px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+      margin-top: 0 !important;
+      width: auto !important;
+    }
+
+    .tab-btn:hover {
+      background: rgba(255,255,255,0.15);
+      color: white;
+    }
+
+    .tab-btn.active {
+      background: rgba(100,200,255,0.22);
+      color: #aaddff;
+      border-color: rgba(100,200,255,0.5);
+      font-weight: 600;
+    }
+
+    /* ============================= */
+    /* SEARCH BOX */
+    /* ============================= */
+    #searchWrapper {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 6px 30px 6px 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 5px;
+      color: white;
+      font-size: 12px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    #searchInput::placeholder { color: rgba(255,255,255,0.4); }
+    #searchInput:focus { border-color: rgba(100,200,255,0.7); }
+
+    #searchClear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+      line-height: 1;
+    }
+    #searchClear:hover { color: white; }
+
+    #searchSuggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(5,5,30,0.97);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      max-height: 180px;
+      overflow-y: auto;
+      z-index: 50;
+      display: none;
+    }
+
+    .suggestion-item {
+      padding: 7px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .suggestion-item:hover, .suggestion-item.active {
+      background: rgba(100,200,255,0.15);
+      color: white;
+    }
+
+    .suggestion-esi {
+      font-size: 10px;
+      color: rgba(150,220,150,0.8);
+    }
+
+    #searchActiveBar {
+      display: none;
+      margin-top: 6px;
+      padding: 5px 8px;
+      background: rgba(100,200,255,0.12);
+      border: 1px solid rgba(100,200,255,0.3);
+      border-radius: 4px;
+      font-size: 11px;
+      color: #aaddff;
+    }
+
+    /* ============================= */
+    /* PLANET TYPE LEGEND */
+    /* ============================= */
+    #typeLegend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,20,0.75);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      z-index: 15;
+      backdrop-filter: blur(4px);
+    }
+
+    #typeLegend .legend-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      opacity: 0.85;
+    }
+
+    .type-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 3px 0;
+    }
+
+    .type-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ============================= */
+    /* HABITABILITY PANEL */
+    /* ============================= */
+    #habitabilityPanel {
+      position: absolute;
+      left: 20px;
+      top: 120px;
+      width: 280px;
+      background: rgba(0, 0, 20, 0.85);
+      color: white;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      backdrop-filter: blur(6px);
+      display: none;
+      z-index: 20;
+    }
+
+    #habitabilityPanel h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    #habitabilityPanel hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin: 10px 0;
+    }
+
+    /* Top Candidates List */
+    .candidate-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      margin-bottom: 5px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .candidate-item:hover {
+      background: rgba(100,200,255,0.12);
+      border-color: rgba(100,200,255,0.3);
+    }
+    .candidate-rank {
+      font-size: 11px;
+      opacity: 0.4;
+      width: 14px;
+      flex-shrink: 0;
+    }
+    .candidate-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .candidate-info { flex: 1; min-width: 0; }
+    .candidate-name {
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .candidate-meta { font-size: 10px; opacity: 0.5; margin-top: 1px; }
+    .candidate-esi {
+      font-size: 12px;
+      font-weight: 700;
+      color: #88dd88;
+      flex-shrink: 0;
+    }
+
+    .hz-good { color: #00ff88; }
+    .hz-bad  { color: #ff5555; }
+
+    .panel-note {
+      opacity: 0.65;
+      font-size: 11px;
+      margin-top: 6px;
+    }
   </style>
 </head>
 
@@ -145,27 +373,54 @@
   <p>Exploring worlds with Earth-like characteristics beyond our solar system</p>
 </div>
 
-
 <!-- ============================= -->
-<!-- FILTER WRAPPER (IMPORTANT) -->
+<!-- FILTER CONTROLS -->
 <!-- ============================= -->
 <div id="filtersContainer">
   <div class="controls">
-    <div>
-      <label>Minimum ESI: <span id="esiValue">0.50</span></label>
-      <input type="range" id="esiSlider" min="0.48" max="0.83" step="0.01" value="0.48">
+
+    <!-- ESI Filter Tabs -->
+    <div class="filter-section-label">Earth Similarity</div>
+    <div class="tab-group" id="esiTabs">
+      <button class="tab-btn active" data-esi="all">All</button>
+      <button class="tab-btn" data-esi="high">High (&ge;0.80)</button>
+      <button class="tab-btn" data-esi="mid">Mid (0.65–0.79)</button>
+      <button class="tab-btn" data-esi="low">Low (&lt;0.65)</button>
     </div>
 
+    <!-- Planet Type Filter Tabs -->
+    <div class="filter-section-label" style="margin-top:10px;">Planet Type</div>
+    <div class="tab-group" id="typeTabs">
+      <button class="tab-btn active" data-type="all">All</button>
+      <button class="tab-btn" data-type="Rocky (Earth-like)">Rocky</button>
+      <button class="tab-btn" data-type="Super-Earth">Super-E</button>
+      <button class="tab-btn" data-type="Mini-Neptune">Neptune</button>
+    </div>
+
+    <!-- Distance Slider (keep this one) -->
     <div style="margin-top:10px;">
-      <label>Max Distance (ly): <span id="distanceValue">5000</span></label>
+      <label style="font-size:12px;">Max Distance: <span id="distanceValue">5000</span> ly</label>
       <input type="range" id="distanceSlider" min="0" max="5000" step="50" value="5000">
     </div>
+
     <p id="planetCount" style="opacity:0.7; font-size:12px; margin-top:4px;">
-    Showing 39 Potentially Habitable Planets
+      Showing 60 Potentially Habitable Planets
     </p>
 
-    <br/>
+    <!-- Search box -->
+    <div id="searchWrapper">
+      <input type="text" id="searchInput" placeholder="🔍 Search planet..." autocomplete="off" />
+      <span id="searchClear">✕</span>
+      <div id="searchSuggestions"></div>
+    </div>
+    <div id="searchActiveBar"></div>
+
+    <!-- Color mode toggle -->
+    <button id="toggleColorMode">Color by: ESI</button>
+
+    <!-- Distance mode toggle -->
     <button id="toggleMode">Toggle Distance Mode</button>
+
   </div>
 </div>
 
@@ -176,17 +431,46 @@
 
 <div class="tooltip"></div>
 
+<!-- ============================= -->
+<!-- INFO PANEL (right side) -->
+<!-- ============================= -->
 <div id="infoPanel">
-  <img id="planetImage" src="" style="width:100%; border-radius:8px; margin-bottom:10px;" />
-  <h2 id="planetName">Click a planet to explore</h2>
-  <p id="planetDetails"></p>
+  <!-- Default home state -->
+  <div id="infoPanelHome">
+    <div style="font-size:10px; opacity:0.45; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Top Candidates</div>
+    <div id="topCandidatesList"></div>
+    <div style="margin-top:12px; font-size:10px; opacity:0.4; line-height:1.6;">
+      Ranked by Earth Similarity Index.<br/>Click any planet on the globe to explore.
+    </div>
+  </div>
+
+  <!-- Planet detail state (shown on click) -->
+  <div id="infoPanelDetail" style="display:none;">
+    <img id="planetImage" src="" style="width:100%; border-radius:8px; margin-bottom:10px;" />
+    <canvas id="planetCanvas" width="230" height="230" style="display:none; border-radius:50%; margin-bottom:10px; width:100%;"></canvas>
+    <div style="font-size:10px; opacity:0.45; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Planet Data</div>
+    <h2 id="planetName" style="margin:0 0 8px 0; font-size:16px;"></h2>
+    <p id="planetDetails" style="margin:0; line-height:1.7;"></p>
+  </div>
 </div>
 
 <!-- ============================= -->
-<!-- Habitability Assessment Panel -->
+<!-- PLANET TYPE LEGEND (NEW) -->
+<!-- ============================= -->
+<div id="typeLegend">
+  <div class="legend-title">Planet Types (by radius)</div>
+  <div class="type-row"><div class="type-dot" style="background:#aabbcc"></div> Sub-Earth (&lt; 0.8 R⊕)</div>
+  <div class="type-row"><div class="type-dot" style="background:#88cc66"></div> Rocky Earth-like (0.8–1.25 R⊕)</div>
+  <div class="type-row"><div class="type-dot" style="background:#ffcc44"></div> Super-Earth (1.25–1.6 R⊕)</div>
+  <div class="type-row"><div class="type-dot" style="background:#66aaff"></div> Mini-Neptune (1.6–4.0 R⊕)</div>
+  <div class="type-row"><div class="type-dot" style="background:#ff8844"></div> Gas Giant (&gt; 4.0 R⊕)</div>
+</div>
+
+<!-- ============================= -->
+<!-- HABITABILITY PANEL -->
 <!-- ============================= -->
 <div id="habitabilityPanel">
-  <h3 id="habitabilityTitle">Habitability Assessment</h3>
+  <h3 id="habitabilityTitle">Host Star</h3>
   <div id="habitabilityContent"></div>
 </div>
 
