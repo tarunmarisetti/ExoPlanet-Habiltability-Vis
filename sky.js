@@ -491,7 +491,7 @@ d3.csv("habitable_master_dataset.csv?v=" + Date.now()).then(data => {
             .attr("text-anchor", "middle")
             .attr("fill", insideHZ ? "#00ff88" : "#ff5555")
             .attr("font-size", "15px").attr("font-weight", 700)
-            .text(insideHZ ? "✓ Inside Conservative Habitable Zone" : "✗ Outside Conservative Habitable Zone");
+            .text(insideHZ ? "Inside Conservative Habitable Zone" : "Outside Conservative Habitable Zone");
 
         // ── Orbit distance (only unique orbital fact) ──
         systemGroup.append("text")
